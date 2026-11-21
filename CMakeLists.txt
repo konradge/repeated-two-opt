@@ -10,13 +10,15 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 endif()
 
 add_library(twoopt
-  src/instance.cpp
-  src/tour.cpp
-  src/naive_two_opt.cpp
-  src/treap_sequence.cpp
-  src/generators.cpp
+  src/data_structure/treap_sequence.cpp
+  src/algorithm/naive_two_opt.cpp
+  src/algorithm/repeated_two_opt.cpp
+  src/util/instance.cpp
+  src/util/tour.cpp
+  src/util/generators.cpp
 )
-target_include_directories(twoopt PUBLIC include)
+# include/: interfaces only. src/: implementations, also visible to apps and tests.
+target_include_directories(twoopt PUBLIC include src)
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   target_compile_options(twoopt PUBLIC -Wall -Wextra -Wpedantic)
 endif()

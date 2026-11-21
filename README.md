@@ -44,23 +44,35 @@ reverse it lazily, insert the two new edges, and join.
 
 ![Files, interfaces and implementations](docs/architecture.svg)
 
-| File | Content |
-|---|---|
-| `include/twoopt/edge_sequence.hpp` | `EdgeSequence` concept: the interface of one T(e) |
-| `include/twoopt/treap_sequence.hpp` | implementation of T(e) as a treap with lazy reversal |
-| `include/twoopt/repeated_two_opt.hpp` | the algorithm, templated on the sequence type |
-| `include/twoopt/naive_two_opt.hpp` | Θ(n²) reference search |
-| `include/twoopt/tour.hpp` | tour array with stable edge ids |
-| `include/twoopt/instance.hpp` | weight matrix |
-| `include/twoopt/generators.hpp` | random and structured instances, start tours |
-| `tests/` | checks against the naive search and against rebuilt sequences |
+`include/` holds only interfaces; every implementation lives in `src/`.
+
+```
+include/twoopt/                   src/
+  data_structure/                   data_structure/
+    edge_sequence.hpp                 treap_sequence.hpp/.cpp      T(e) as a treap with lazy reversal
+  algorithm/                        algorithm/
+    two_opt_algorithm.hpp             repeated_two_opt.hpp/.cpp    Theorem 7/9, templated on T(e)
+                                      naive_two_opt.hpp/.cpp       Θ(n²) reference search
+  util/                             util/
+    tour.hpp                          tour.cpp                     tour array with stable edge ids
+    instance.hpp                      instance.cpp                 weight matrix
+    two_move.hpp                                                   TwoMove, its order, delta formula
+    generators.hpp                    generators.cpp               instances and start tours
+    types.hpp                         random.hpp, io.hpp           RNG, file parsing
+apps/                                                              command-line programs
+tests/                                                             checks against the naive search and rebuilt T(e)
+```
 
 ### Adding another sequence implementation
 
 Implement the four operations of `EdgeSequence` (`build`, `best`, `oriented`,
-`applyTwoMove`; see `edge_sequence.hpp`), then add one line to `main()` in
+`applyTwoMove`; see `include/twoopt/data_structure/edge_sequence.hpp`). Then add one line
+`template class RepeatedTwoOpt<YourSequence>;` at the end of
+`src/algorithm/repeated_two_opt.cpp`, and one test call each in
 `tests/test_treap_sequence.cpp` and `tests/test_repeated_two_opt.cpp`. The algorithm
 itself does not change: `RepeatedTwoOpt<YourSequence>`.
+A new algorithm implements `TwoOptAlgorithm` (`include/twoopt/algorithm/two_opt_algorithm.hpp`) and is
+compared with `NaiveTwoOpt` in `tests/test_repeated_two_opt.cpp`.
 
 ## Differences from the paper
 

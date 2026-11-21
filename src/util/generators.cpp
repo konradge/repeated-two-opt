@@ -1,11 +1,11 @@
-#include "twoopt/generators.hpp"
+#include "twoopt/util/generators.hpp"
 
 #include <algorithm>
 #include <cmath>
 #include <numbers>
 #include <numeric>
 
-#include "twoopt/random.hpp"
+#include "util/random.hpp"
 
 namespace twoopt {
 

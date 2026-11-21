@@ -1,9 +1,9 @@
-#include "twoopt/instance.hpp"
+#include "twoopt/util/instance.hpp"
 
 #include <ostream>
 #include <stdexcept>
 
-#include "io.hpp"
+#include "util/io.hpp"
 
 namespace twoopt {
 

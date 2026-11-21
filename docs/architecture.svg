@@ -48,20 +48,20 @@
 
   <!-- Algorithm interface -->
   <rect x="320" y="175" width="300" height="84" rx="6" class="iface"/>
-  <text x="470" y="194" text-anchor="middle" class="stereo">«interface, implicit»</text>
-  <text x="470" y="213" text-anchor="middle" class="name">Algorithm</text>
+  <text x="470" y="194" text-anchor="middle" class="stereo">«C++20 concept»</text>
+  <text x="470" y="213" text-anchor="middle" class="name">TwoOptAlgorithm</text>
   <text x="470" y="232" text-anchor="middle" class="ops">bestMove() · apply(move) · tour()</text>
-  <text x="470" y="250" text-anchor="middle" class="note">used by runToLocalOptimum()</text>
+  <text x="470" y="250" text-anchor="middle" class="file">include/…/two_opt_algorithm.hpp</text>
 
   <!-- Algorithms -->
   <rect x="60" y="320" width="240" height="56" rx="6" class="impl"/>
   <text x="180" y="344" text-anchor="middle" class="name">NaiveTwoOpt</text>
-  <text x="180" y="363" text-anchor="middle" class="file">naive_two_opt.hpp/.cpp</text>
+  <text x="180" y="363" text-anchor="middle" class="file">src/algorithm/naive_two_opt.*</text>
   <text x="180" y="394" text-anchor="middle" class="note">Θ(n²) per iteration</text>
 
   <rect x="350" y="320" width="300" height="56" rx="6" class="impl"/>
   <text x="500" y="344" text-anchor="middle" class="name">RepeatedTwoOpt&lt;Sequence&gt;</text>
-  <text x="500" y="363" text-anchor="middle" class="file">repeated_two_opt.hpp</text>
+  <text x="500" y="363" text-anchor="middle" class="file">src/algorithm/repeated_two_opt.*</text>
   <text x="660" y="352" class="note">Theorem 7 (arXiv) / 9 (TALG):</text>
   <text x="660" y="368" class="note">O(n²) preprocessing, n sequences T(e)</text>
 
@@ -70,12 +70,12 @@
   <text x="500" y="459" text-anchor="middle" class="stereo">«C++20 concept»</text>
   <text x="500" y="478" text-anchor="middle" class="name">EdgeSequence  =  one T(e)</text>
   <text x="500" y="499" text-anchor="middle" class="ops">build · best · oriented · applyTwoMove</text>
-  <text x="500" y="524" text-anchor="middle" class="file">edge_sequence.hpp (also Candidate)</text>
+  <text x="500" y="524" text-anchor="middle" class="file">include/…/edge_sequence.hpp</text>
 
   <!-- Sequence implementations -->
   <rect x="110" y="610" width="250" height="70" rx="6" class="impl"/>
   <text x="235" y="634" text-anchor="middle" class="name">TreapSequence</text>
-  <text x="235" y="652" text-anchor="middle" class="file">treap_sequence.hpp/.cpp</text>
+  <text x="235" y="652" text-anchor="middle" class="file">src/…/treap_sequence.*</text>
   <text x="235" y="670" text-anchor="middle" class="note">expected O(log n) per update</text>
 
   <rect x="385" y="610" width="230" height="70" rx="6" class="planned"/>
@@ -90,7 +90,7 @@
 
   <!-- Shared building blocks -->
   <rect x="30" y="712" width="940" height="92" rx="8" class="band"/>
-  <text x="46" y="732" class="note" font-weight="bold">Shared building blocks (include/twoopt/, src/) — used by everything above</text>
+  <text x="46" y="732" class="note" font-weight="bold">util/ — shared building blocks (interfaces in include/, code in src/), used by everything above</text>
   <g>
     <rect x="46" y="742" width="168" height="50" rx="5" class="box"/>
     <text x="130" y="762" text-anchor="middle" class="name">Tour</text>
@@ -111,7 +111,7 @@
 
   <!-- uses -->
   <path d="M470,116 L470,173" class="arrow"/>
-  <text x="478" y="150" class="label">runToLocalOptimum()</text>
+  <text x="462" y="150" text-anchor="end" class="label">runToLocalOptimum()</text>
   <path d="M40,88 L20,88 L20,812 L670,812 L670,794" class="arrow"/>
   <path d="M500,376 L500,438" class="arrow"/>
   <text x="508" y="412" class="label">template parameter: n × Sequence</text>

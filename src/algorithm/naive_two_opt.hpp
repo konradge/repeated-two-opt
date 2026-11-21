@@ -2,9 +2,10 @@
 
 #include <optional>
 
-#include "twoopt/instance.hpp"
-#include "twoopt/tour.hpp"
-#include "twoopt/two_move.hpp"
+#include "twoopt/algorithm/two_opt_algorithm.hpp"
+#include "twoopt/util/instance.hpp"
+#include "twoopt/util/tour.hpp"
+#include "twoopt/util/two_move.hpp"
 
 namespace twoopt {
 
@@ -23,5 +24,7 @@ class NaiveTwoOpt {
   const Instance& instance_;
   Tour tour_;
 };
+
+static_assert(TwoOptAlgorithm<NaiveTwoOpt>);
 
 }  // namespace twoopt

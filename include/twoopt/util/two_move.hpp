@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <tuple>
 
-#include "twoopt/instance.hpp"
-#include "twoopt/types.hpp"
+#include "twoopt/util/instance.hpp"
+#include "twoopt/util/types.hpp"
 
 namespace twoopt {
 

@@ -5,10 +5,10 @@
 #include <utility>
 #include <vector>
 
-#include "twoopt/edge_sequence.hpp"
-#include "twoopt/instance.hpp"
-#include "twoopt/random.hpp"
-#include "twoopt/types.hpp"
+#include "twoopt/data_structure/edge_sequence.hpp"
+#include "twoopt/util/instance.hpp"
+#include "twoopt/util/types.hpp"
+#include "util/random.hpp"
 
 namespace twoopt {
 

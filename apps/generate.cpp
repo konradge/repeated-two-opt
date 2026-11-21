@@ -5,8 +5,8 @@
 #include <string>
 #include <vector>
 
-#include "twoopt/generators.hpp"
-#include "twoopt/tour.hpp"
+#include "twoopt/util/generators.hpp"
+#include "twoopt/util/tour.hpp"
 
 using namespace twoopt;
 

@@ -4,7 +4,7 @@
 #include <iosfwd>
 #include <vector>
 
-#include "twoopt/types.hpp"
+#include "twoopt/util/types.hpp"
 
 namespace twoopt {
 

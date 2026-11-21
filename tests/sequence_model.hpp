@@ -6,9 +6,9 @@
 #include <vector>
 
 #include "check.hpp"
-#include "twoopt/edge_sequence.hpp"
-#include "twoopt/tour.hpp"
-#include "twoopt/two_move.hpp"
+#include "twoopt/data_structure/edge_sequence.hpp"
+#include "twoopt/util/tour.hpp"
+#include "twoopt/util/two_move.hpp"
 
 namespace twoopt::test {
 

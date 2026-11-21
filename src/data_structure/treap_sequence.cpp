@@ -1,9 +1,9 @@
-#include "twoopt/treap_sequence.hpp"
+#include "data_structure/treap_sequence.hpp"
 
 #include <algorithm>
 #include <cassert>
 
-#include "twoopt/two_move.hpp"
+#include "twoopt/util/two_move.hpp"
 
 namespace twoopt {
 

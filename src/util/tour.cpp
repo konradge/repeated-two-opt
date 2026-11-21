@@ -1,12 +1,12 @@
-#include "twoopt/tour.hpp"
+#include "twoopt/util/tour.hpp"
 
 #include <algorithm>
 #include <cstdlib>
 #include <ostream>
 #include <stdexcept>
 
-#include "io.hpp"
-#include "twoopt/two_move.hpp"
+#include "twoopt/util/two_move.hpp"
+#include "util/io.hpp"
 
 namespace twoopt {
 

@@ -1,10 +1,10 @@
 // The 7-point example of the seminar walkthrough (theorem7/ in the seminar folder).
 #include <vector>
 
+#include "algorithm/repeated_two_opt.hpp"
 #include "check.hpp"
-#include "twoopt/generators.hpp"
-#include "twoopt/repeated_two_opt.hpp"
-#include "twoopt/treap_sequence.hpp"
+#include "data_structure/treap_sequence.hpp"
+#include "twoopt/util/generators.hpp"
 
 using namespace twoopt;
 

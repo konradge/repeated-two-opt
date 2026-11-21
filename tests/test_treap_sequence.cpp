@@ -2,10 +2,10 @@
 // testSequence() works for every EdgeSequence, so new backends only need one more call in main().
 #include <vector>
 
+#include "data_structure/treap_sequence.hpp"
 #include "sequence_model.hpp"
-#include "twoopt/generators.hpp"
-#include "twoopt/random.hpp"
-#include "twoopt/treap_sequence.hpp"
+#include "twoopt/util/generators.hpp"
+#include "util/random.hpp"
 
 using namespace twoopt;
 

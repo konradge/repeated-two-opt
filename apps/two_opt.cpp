@@ -5,10 +5,10 @@
 #include <string>
 #include <vector>
 
-#include "twoopt/generators.hpp"
-#include "twoopt/naive_two_opt.hpp"
-#include "twoopt/repeated_two_opt.hpp"
-#include "twoopt/treap_sequence.hpp"
+#include "algorithm/naive_two_opt.hpp"
+#include "algorithm/repeated_two_opt.hpp"
+#include "data_structure/treap_sequence.hpp"
+#include "twoopt/util/generators.hpp"
 
 using namespace twoopt;
 

@@ -1,4 +1,4 @@
-#include "twoopt/naive_two_opt.hpp"
+#include "algorithm/naive_two_opt.hpp"
 
 #include <utility>
 

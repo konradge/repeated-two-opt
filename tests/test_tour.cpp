@@ -5,9 +5,9 @@
 #include <utility>
 
 #include "check.hpp"
-#include "twoopt/generators.hpp"
-#include "twoopt/random.hpp"
-#include "twoopt/tour.hpp"
+#include "twoopt/util/generators.hpp"
+#include "twoopt/util/tour.hpp"
+#include "util/random.hpp"
 
 using namespace twoopt;
 
