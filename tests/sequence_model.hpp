@@ -26,15 +26,12 @@ inline std::vector<Edge> expectedPath(const Tour& tour, Edge reference) {
 // Compares a sequence with a version computed from scratch.
 template <EdgeSequence Sequence>
 void checkSequence(const Sequence& sequence, const Instance& instance, const Tour& tour, Edge reference) {
-  Weight best = std::numeric_limits<Weight>::max();
+  Candidate best{std::numeric_limits<Weight>::max(), 0};
   for (const Edge& edge : expectedPath(tour, reference)) {
     CHECK(sequence.oriented(edge.id) == edge);
-    best = std::min(best, twoMoveDelta(instance, reference.from, reference.to, edge.from, edge.to));
+    best = std::min(best, Candidate{twoMoveDelta(instance, reference.from, reference.to, edge.from, edge.to), edge.id});
   }
-  const Candidate candidate = sequence.best();
-  CHECK(candidate.delta == best);
-  const Edge partner = sequence.oriented(candidate.edge);
-  CHECK(twoMoveDelta(instance, reference.from, reference.to, partner.from, partner.to) == best);
+  CHECK(sequence.best() == best);
 }
 
 }  // namespace twoopt::test

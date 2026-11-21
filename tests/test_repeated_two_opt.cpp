@@ -25,18 +25,26 @@ void compareWithNaive(const Instance& instance, const Tour& start, bool checkAll
     }
     const auto move = fast.bestMove();
     const auto expected = naive.bestMove();
-    CHECK(move.has_value() == expected.has_value());
+    CHECK(move == expected);  // same move, including the tie-break
     if (!move) break;
-    CHECK(move->delta == expected->delta);
     CHECK(!fast.tour().adjacent(move->first, move->second));
     CHECK(twoMoveDelta(instance, fast.tour(), move->first, move->second) == move->delta);
 
     const Weight before = fast.tour().length(instance);
     fast.apply(*move);
-    naive.apply(*move);  // same move, so ties cannot make the runs diverge
+    naive.apply(*expected);
     CHECK(fast.tour().order() == naive.tour().order());
     CHECK(fast.tour().length(instance) == before + move->delta);
   }
+}
+
+// Two independent runs must end in the same tour after the same number of moves.
+template <EdgeSequence Sequence>
+void compareFinalTours(const Instance& instance, const Tour& start) {
+  RepeatedTwoOpt<Sequence> fast(instance, start);
+  NaiveTwoOpt naive(instance, start);
+  CHECK(runToLocalOptimum(fast) == runToLocalOptimum(naive));
+  CHECK(fast.tour().order() == naive.tour().order());
 }
 
 }  // namespace
@@ -58,6 +66,7 @@ int main() {
       }
     }
     for (int n : {60, 120}) compareWithNaive<TreapSequence>(kind(n, 9), Tour(randomOrder(n, 9)), false);
+    compareFinalTours<TreapSequence>(kind(300, 5), Tour(randomOrder(300, 5)));
   }
   return 0;
 }

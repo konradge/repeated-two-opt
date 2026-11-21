@@ -16,8 +16,7 @@ int main() {
 
   // Edge ids start as positions: 0 = AB, 3 = DE.
   const auto move = algorithm.bestMove();
-  CHECK(move && move->delta == -11);
-  CHECK((move->first == 0 && move->second == 3) || (move->first == 3 && move->second == 0));
+  CHECK(move == TwoMove({0, 3, -11}));
 
   algorithm.apply(*move);
   CHECK(algorithm.tour().order() == std::vector<Vertex>({A, D, C, B, E, F, G}));

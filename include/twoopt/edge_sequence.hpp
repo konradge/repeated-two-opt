@@ -23,7 +23,8 @@ struct Candidate {
 // with delta w(a,c) + w(b,d) - w(a,b) - w(c,d).
 //
 //   build(instance, e, path)   path = P(e) in order, directed from b to a.          O(n)
-//   best()                     edge of P(e) with the smallest delta.                  O(1)
+//   best()                     edge of P(e) with the smallest delta; among equal       O(1)
+//                              deltas the one with the smallest id (= Candidate order).
 //   oriented(f)                f directed along P(e).                                 O(log n)
 //   applyTwoMove(x, y, u, v)   P(e) = X x Y y Z with x = p→q, y = r→s becomes
 //                              X (p→r) reverse(Y) (q→s) Z. u and v are the new edges

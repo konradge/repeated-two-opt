@@ -23,12 +23,16 @@ class RepeatedTwoOpt {
     for (EdgeId e = 0; e < tour_.size(); ++e) rebuild(e);
   }
 
-  // Best improving move, or nothing if the tour is 2-optimal. O(n).
+  // Best improving move (in the order of TwoMove), or nothing if the tour is 2-optimal. O(n).
+  // T(e) breaks ties by the smaller partner id, which for a fixed e is the same as
+  // TwoMove's tie-break, so the minimum over all T(e) is the overall best move.
   std::optional<TwoMove> bestMove() const {
     std::optional<TwoMove> best;
     for (EdgeId e = 0; e < tour_.size(); ++e) {
       const Candidate candidate = sequences_[e].best();
-      if (candidate.delta < (best ? best->delta : 0)) best = TwoMove{e, candidate.edge, candidate.delta};
+      if (candidate.delta >= 0) continue;
+      const TwoMove move = makeTwoMove(e, candidate.edge, candidate.delta);
+      if (!best || move < *best) best = move;
     }
     return best;
   }

@@ -9,17 +9,15 @@ NaiveTwoOpt::NaiveTwoOpt(const Instance& instance, Tour tour) : instance_(instan
 std::optional<TwoMove> NaiveTwoOpt::bestMove() const {
   const int n = tour_.size();
   std::optional<TwoMove> best;
-  Weight bestDelta = 0;
   for (int i = 0; i + 2 < n; ++i) {
     const Edge first = tour_.edgeAt(i);
     const int last = i == 0 ? n - 2 : n - 1;  // edge n-1 touches edge 0
     for (int j = i + 2; j <= last; ++j) {
       const Edge second = tour_.edgeAt(j);
       const Weight delta = twoMoveDelta(instance_, first.from, first.to, second.from, second.to);
-      if (delta < bestDelta) {
-        bestDelta = delta;
-        best = TwoMove{first.id, second.id, delta};
-      }
+      if (delta >= 0) continue;
+      const TwoMove move = makeTwoMove(first.id, second.id, delta);
+      if (!best || move < *best) best = move;
     }
   }
   return best;
