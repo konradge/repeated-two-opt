@@ -42,6 +42,8 @@ reverse it lazily, insert the two new edges, and join.
 
 ## Code layout
 
+![Files, interfaces and implementations](docs/architecture.svg)
+
 | File | Content |
 |---|---|
 | `include/twoopt/edge_sequence.hpp` | `EdgeSequence` concept: the interface of one T(e) |

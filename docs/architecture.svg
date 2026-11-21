@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 830" width="1000" height="830" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="uses" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+    <marker id="implements" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M1,1 L11,6 L1,11 z" fill="#fff" stroke="#1f5fa8" stroke-width="1.3"/>
+    </marker>
+    <style>
+      .box { fill: #f7f7f7; stroke: #555; stroke-width: 1.3; }
+      .iface { fill: #e8f0fb; stroke: #1f5fa8; stroke-width: 1.6; }
+      .impl { fill: #eef7ee; stroke: #3c8a3c; stroke-width: 1.3; }
+      .planned { fill: #fff; stroke: #999; stroke-width: 1.3; stroke-dasharray: 6 4; }
+      .band { fill: #fbf6ea; stroke: #b99a4a; stroke-width: 1.2; }
+      .name { font-size: 15px; font-weight: bold; fill: #222; }
+      .file { font-size: 12px; fill: #555; font-family: Menlo, Consolas, monospace; }
+      .stereo { font-size: 12px; fill: #1f5fa8; font-style: italic; }
+      .ops { font-size: 12px; fill: #333; font-family: Menlo, Consolas, monospace; }
+      .note { font-size: 12px; fill: #555; }
+      .gray { fill: #888; }
+      .arrow { stroke: #444; stroke-width: 1.4; fill: none; marker-end: url(#uses); }
+      .realize { stroke: #1f5fa8; stroke-width: 1.4; fill: none; stroke-dasharray: 6 4; marker-end: url(#implements); }
+      .label { font-size: 11px; fill: #444; }
+      .title { font-size: 20px; font-weight: bold; fill: #222; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="830" fill="#ffffff"/>
+  <text x="30" y="32" class="title">Repeated 2-opt: files, interfaces and implementations</text>
+
+  <!-- Applications -->
+  <rect x="40" y="60" width="200" height="56" rx="6" class="box"/>
+  <text x="140" y="84" text-anchor="middle" class="name">generate</text>
+  <text x="140" y="103" text-anchor="middle" class="file">apps/generate.cpp</text>
+
+  <rect x="360" y="60" width="220" height="56" rx="6" class="box"/>
+  <text x="470" y="84" text-anchor="middle" class="name">two_opt</text>
+  <text x="470" y="103" text-anchor="middle" class="file">apps/two_opt.cpp</text>
+
+  <!-- Tests -->
+  <rect x="700" y="60" width="270" height="118" rx="6" class="box"/>
+  <text x="835" y="84" text-anchor="middle" class="name">tests/</text>
+  <text x="716" y="106" class="file">test_repeated_two_opt.cpp</text>
+  <text x="716" y="122" class="file">test_treap_sequence.cpp</text>
+  <text x="716" y="138" class="file">test_paper_example.cpp</text>
+  <text x="716" y="154" class="file">test_tour.cpp</text>
+  <text x="716" y="170" class="file">sequence_model.hpp, check.hpp</text>
+
+  <!-- Algorithm interface -->
+  <rect x="320" y="175" width="300" height="84" rx="6" class="iface"/>
+  <text x="470" y="194" text-anchor="middle" class="stereo">«interface, implicit»</text>
+  <text x="470" y="213" text-anchor="middle" class="name">Algorithm</text>
+  <text x="470" y="232" text-anchor="middle" class="ops">bestMove() · apply(move) · tour()</text>
+  <text x="470" y="250" text-anchor="middle" class="note">used by runToLocalOptimum()</text>
+
+  <!-- Algorithms -->
+  <rect x="60" y="320" width="240" height="56" rx="6" class="impl"/>
+  <text x="180" y="344" text-anchor="middle" class="name">NaiveTwoOpt</text>
+  <text x="180" y="363" text-anchor="middle" class="file">naive_two_opt.hpp/.cpp</text>
+  <text x="180" y="394" text-anchor="middle" class="note">Θ(n²) per iteration</text>
+
+  <rect x="350" y="320" width="300" height="56" rx="6" class="impl"/>
+  <text x="500" y="344" text-anchor="middle" class="name">RepeatedTwoOpt&lt;Sequence&gt;</text>
+  <text x="500" y="363" text-anchor="middle" class="file">repeated_two_opt.hpp</text>
+  <text x="660" y="352" class="note">Theorem 7 (arXiv) / 9 (TALG):</text>
+  <text x="660" y="368" class="note">O(n²) preprocessing, n sequences T(e)</text>
+
+  <!-- EdgeSequence concept -->
+  <rect x="330" y="440" width="340" height="96" rx="6" class="iface"/>
+  <text x="500" y="459" text-anchor="middle" class="stereo">«C++20 concept»</text>
+  <text x="500" y="478" text-anchor="middle" class="name">EdgeSequence  =  one T(e)</text>
+  <text x="500" y="499" text-anchor="middle" class="ops">build · best · oriented · applyTwoMove</text>
+  <text x="500" y="524" text-anchor="middle" class="file">edge_sequence.hpp (also Candidate)</text>
+
+  <!-- Sequence implementations -->
+  <rect x="110" y="610" width="250" height="70" rx="6" class="impl"/>
+  <text x="235" y="634" text-anchor="middle" class="name">TreapSequence</text>
+  <text x="235" y="652" text-anchor="middle" class="file">treap_sequence.hpp/.cpp</text>
+  <text x="235" y="670" text-anchor="middle" class="note">expected O(log n) per update</text>
+
+  <rect x="385" y="610" width="230" height="70" rx="6" class="planned"/>
+  <text x="500" y="634" text-anchor="middle" class="name gray">RedBlackSequence</text>
+  <text x="500" y="652" text-anchor="middle" class="note">planned · as in the paper</text>
+  <text x="500" y="670" text-anchor="middle" class="note">worst-case O(log n)</text>
+
+  <rect x="640" y="610" width="250" height="70" rx="6" class="planned"/>
+  <text x="765" y="634" text-anchor="middle" class="name gray">TwoLevelListSequence</text>
+  <text x="765" y="652" text-anchor="middle" class="note">planned · Fredman et al.</text>
+  <text x="765" y="670" text-anchor="middle" class="note">O(√n) per update</text>
+
+  <!-- Shared building blocks -->
+  <rect x="30" y="712" width="940" height="92" rx="8" class="band"/>
+  <text x="46" y="732" class="note" font-weight="bold">Shared building blocks (include/twoopt/, src/) — used by everything above</text>
+  <g>
+    <rect x="46" y="742" width="168" height="50" rx="5" class="box"/>
+    <text x="130" y="762" text-anchor="middle" class="name">Tour</text>
+    <text x="130" y="780" text-anchor="middle" class="file">tour.hpp/.cpp</text>
+    <rect x="226" y="742" width="168" height="50" rx="5" class="box"/>
+    <text x="310" y="762" text-anchor="middle" class="name">Instance</text>
+    <text x="310" y="780" text-anchor="middle" class="file">instance.hpp/.cpp</text>
+    <rect x="406" y="742" width="168" height="50" rx="5" class="box"/>
+    <text x="490" y="762" text-anchor="middle" class="name">TwoMove</text>
+    <text x="490" y="780" text-anchor="middle" class="file">two_move.hpp</text>
+    <rect x="586" y="742" width="168" height="50" rx="5" class="box"/>
+    <text x="670" y="762" text-anchor="middle" class="name">generators</text>
+    <text x="670" y="780" text-anchor="middle" class="file">generators.hpp/.cpp</text>
+    <rect x="766" y="742" width="190" height="50" rx="5" class="box"/>
+    <text x="861" y="762" text-anchor="middle" class="name">types · Random</text>
+    <text x="861" y="780" text-anchor="middle" class="file">types.hpp, random.hpp</text>
+  </g>
+
+  <!-- uses -->
+  <path d="M470,116 L470,173" class="arrow"/>
+  <text x="478" y="150" class="label">runToLocalOptimum()</text>
+  <path d="M40,88 L20,88 L20,812 L670,812 L670,794" class="arrow"/>
+  <path d="M500,376 L500,438" class="arrow"/>
+  <text x="508" y="412" class="label">template parameter: n × Sequence</text>
+  <path d="M700,120 L650,120 Q622,120 622,148 L622,175" class="arrow" style="stroke-dasharray:2 3"/>
+  <text x="580" y="143" text-anchor="middle" class="label">tests every</text>
+  <text x="580" y="156" text-anchor="middle" class="label">implementation</text>
+
+  <!-- implements -->
+  <path d="M180,320 L180,290 L318,250" class="realize"/>
+  <path d="M500,320 L500,261" class="realize"/>
+  <path d="M235,610 L235,575 L410,538" class="realize"/>
+  <path d="M500,610 L500,538" class="realize"/>
+  <path d="M765,610 L765,575 L590,538" class="realize"/>
+
+  <!-- Legend -->
+  <g transform="translate(705,206)">
+    <rect x="0" y="0" width="265" height="104" rx="6" fill="#fff" stroke="#ccc"/>
+    <path d="M12,20 L60,20" class="arrow"/>
+    <text x="70" y="24" class="label">uses</text>
+    <path d="M12,42 L60,42" class="realize"/>
+    <text x="70" y="46" class="label">implements (interchangeable)</text>
+    <rect x="12" y="56" width="48" height="16" class="iface"/>
+    <text x="70" y="68" class="label">interface</text>
+    <rect x="140" y="56" width="48" height="16" class="impl"/>
+    <text x="196" y="68" class="label">implemented</text>
+    <rect x="12" y="80" width="48" height="16" class="planned"/>
+    <text x="70" y="92" class="label">planned, not implemented yet</text>
+  </g>
+</svg>
