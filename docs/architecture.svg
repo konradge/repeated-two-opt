@@ -77,20 +77,25 @@
   <text x="500" y="524" text-anchor="middle" class="file">include/…/edge_sequence.hpp</text>
 
   <!-- Sequence implementations -->
-  <rect x="110" y="610" width="250" height="70" rx="6" class="impl"/>
-  <text x="235" y="634" text-anchor="middle" class="name">TreapSequence</text>
-  <text x="235" y="652" text-anchor="middle" class="file">src/…/treap_sequence.*</text>
-  <text x="235" y="670" text-anchor="middle" class="note">expected O(log n) per update</text>
+  <rect x="40" y="610" width="215" height="70" rx="6" class="impl"/>
+  <text x="147.5" y="634" text-anchor="middle" class="name">TreapSequence</text>
+  <text x="147.5" y="652" text-anchor="middle" class="file">src/…/treap_sequence.*</text>
+  <text x="147.5" y="670" text-anchor="middle" class="note">expected O(log n) per update</text>
 
-  <rect x="385" y="610" width="230" height="70" rx="6" class="planned"/>
-  <text x="500" y="634" text-anchor="middle" class="name gray">RedBlackSequence</text>
-  <text x="500" y="652" text-anchor="middle" class="note">planned · as in the paper</text>
-  <text x="500" y="670" text-anchor="middle" class="note">worst-case O(log n)</text>
+  <rect x="275" y="610" width="215" height="70" rx="6" class="planned"/>
+  <text x="382.5" y="634" text-anchor="middle" class="name gray">RedBlackSequence</text>
+  <text x="382.5" y="652" text-anchor="middle" class="note">planned · as in the paper</text>
+  <text x="382.5" y="670" text-anchor="middle" class="note">worst-case O(log n)</text>
 
-  <rect x="640" y="610" width="250" height="70" rx="6" class="planned"/>
-  <text x="765" y="634" text-anchor="middle" class="name gray">TwoLevelListSequence</text>
-  <text x="765" y="652" text-anchor="middle" class="note">planned · Fredman et al.</text>
-  <text x="765" y="670" text-anchor="middle" class="note">O(√n) per update</text>
+  <rect x="510" y="610" width="215" height="70" rx="6" class="planned"/>
+  <text x="617.5" y="634" text-anchor="middle" class="name gray">ArraySequence</text>
+  <text x="617.5" y="652" text-anchor="middle" class="note">planned · Fredman: small n</text>
+  <text x="617.5" y="670" text-anchor="middle" class="note">O(n) per update</text>
+
+  <rect x="745" y="610" width="215" height="70" rx="6" class="planned"/>
+  <text x="852.5" y="634" text-anchor="middle" class="name gray">TwoLevelListSequence</text>
+  <text x="852.5" y="652" text-anchor="middle" class="note">planned · Fredman et al.</text>
+  <text x="852.5" y="670" text-anchor="middle" class="note">O(√n) per update</text>
 
   <!-- Shared building blocks -->
   <rect x="30" y="712" width="940" height="92" rx="8" class="band"/>
@@ -127,9 +132,10 @@
   <path d="M180,320 L180,290 L318,250" class="realize"/>
   <path d="M500,320 L500,261" class="realize"/>
   <path d="M700,335 L675,335 L675,290 L622,254" class="realize"/>
-  <path d="M235,610 L235,575 L410,538" class="realize"/>
-  <path d="M500,610 L500,538" class="realize"/>
-  <path d="M765,610 L765,575 L590,538" class="realize"/>
+  <path d="M147.5,610 L147.5,575 L400,538" class="realize"/>
+  <path d="M382.5,610 L382.5,575 L470,538" class="realize"/>
+  <path d="M617.5,610 L617.5,575 L530,538" class="realize"/>
+  <path d="M852.5,610 L852.5,575 L600,538" class="realize"/>
 
   <!-- Legend -->
   <g transform="translate(705,206)">
