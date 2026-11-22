@@ -62,8 +62,12 @@
   <rect x="350" y="320" width="300" height="56" rx="6" class="impl"/>
   <text x="500" y="344" text-anchor="middle" class="name">RepeatedTwoOpt&lt;Sequence&gt;</text>
   <text x="500" y="363" text-anchor="middle" class="file">src/algorithm/repeated_two_opt.*</text>
-  <text x="660" y="352" class="note">Theorem 7 (arXiv) / 9 (TALG):</text>
-  <text x="660" y="368" class="note">O(n²) preprocessing, n sequences T(e)</text>
+  <text x="510" y="394" class="label">Theorem 7 (arXiv) / 9 (TALG), O(n²) preprocessing</text>
+
+  <rect x="700" y="320" width="270" height="56" rx="6" class="planned"/>
+  <text x="835" y="344" text-anchor="middle" class="name gray">LanciaVidoniTwoOpt</text>
+  <text x="835" y="363" text-anchor="middle" class="note">planned · Lancia &amp; Vidoni (2025)</text>
+  <text x="835" y="414" text-anchor="middle" class="note">exact, avg. subquadratic, worst Θ(n²)</text>
 
   <!-- EdgeSequence concept -->
   <rect x="330" y="440" width="340" height="96" rx="6" class="iface"/>
@@ -122,6 +126,7 @@
   <!-- implements -->
   <path d="M180,320 L180,290 L318,250" class="realize"/>
   <path d="M500,320 L500,261" class="realize"/>
+  <path d="M700,335 L675,335 L675,290 L622,254" class="realize"/>
   <path d="M235,610 L235,575 L410,538" class="realize"/>
   <path d="M500,610 L500,538" class="realize"/>
   <path d="M765,610 L765,575 L590,538" class="realize"/>
